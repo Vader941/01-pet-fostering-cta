@@ -1,0 +1,133 @@
+/* Use a modern, easy-to-read font */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the CTA banner */
+.cta-banner {
+  background-color: #1e90a3; /* Fallback color */
+  background-image: url('img/cta-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+/* Light overlay for readability */
+.cta-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 144, 163, 0.5); /* Semi-transparent teal */
+  z-index: 0;
+}
+
+/* Make sure text is above the overlay */
+.cta-banner h1,
+.cta-banner p,
+.cta-banner .cta-button {
+  position: relative;
+  z-index: 1;
+}
+
+/* Make the main heading large and bold */
+.cta-banner h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+/* Style the description text */
+.cta-banner p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Style the call-to-action button */
+.cta-button {
+  background-color: #38b6b2; /* Bright teal button */
+  color: #ffffff;
+  text-decoration: none;
+  padding: 15px 35px;
+  font-size: 1.1em;
+  border-radius: 5px; /* Rounded corners */
+  border: none;
+  display: inline-block;
+  font-weight: bold;
+  /* Make the button stand out */
+  box-shadow: 0 4px 8px rgba(30, 144, 163, 0.2);
+  transition: background-color 0.2s;
+}
+
+/* Change button color when hovered */
+.cta-button:hover {
+  background-color: #259ca6;
+  cursor: pointer;
+}
+
+/* Style for the simple site header */
+.site-header {
+  background-color: #259ca6; /* Slightly different teal for contrast */
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 0;
+  /* Keep the header simple and clean */
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  margin-bottom: 0;
+}
+
+.site-header h2 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+/* Info section with image and text side by side */
+.info-section {
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+/* Show image and text in two columns using basic CSS */
+.info-image {
+  width: 45%;
+  max-width: 300px;
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 5%;
+  border-radius: 8px;
+}
+
+/* Info text column */
+.info-text {
+  width: 45%;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* Responsive: stack columns on small screens */
+@media (max-width: 700px) {
+  .info-image,
+  .info-text {
+    display: block;
+    width: 90%;
+    margin: 0 auto 20px auto;
+    text-align: center;
+  }
+  .info-text {
+    text-align: center;
+  }
+}
