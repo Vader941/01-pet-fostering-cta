@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Start Fostering - PetQuest</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // This script uses Google Search URLs to help users find local shelters.
+    // It does not use any advanced APIs, just basic JavaScript for beginners.
+    function searchShelters(event) {
+      event.preventDefault();
+      var location = document.getElementById('location').value;
+      var resultsList = document.getElementById('results-list');
+      var nextBtn = document.getElementById('next-btn');
+      var prevBtn = document.getElementById('prev-btn');
+      var resultsDiv = document.getElementById('results');
+      resultsList.innerHTML = '';
+      nextBtn.style.display = 'none';
+      prevBtn.style.display = 'none';
+
+      if (!location) {
+        resultsDiv.style.display = 'none';
+        return;
+      }
+
+      // For beginners: We'll use a static list of example shelters for demonstration.
+      var exampleShelters = [
+        { name: "Happy Tails Animal Shelter", url: "https://happytails.org", contact: "(555) 123-4567" },
+        { name: "City Paws Rescue", url: "https://citypaws.org", contact: "(555) 234-5678" },
+        { name: "Safe Haven Shelter", url: "https://safehavenpets.com", contact: "(555) 345-6789" },
+        { name: "Furry Friends Rescue", url: "https://furryfriends.org", contact: "(555) 456-7890" },
+        { name: "Paws & Claws Center", url: "https://pawsclaws.com", contact: "(555) 567-8901" },
+        { name: "Second Chance Shelter", url: "https://secondchance.org", contact: "(555) 678-9012" },
+        { name: "Loving Arms Animal Rescue", url: "https://lovingarms.org", contact: "(555) 789-0123" },
+        { name: "Hopeful Hearts Shelter", url: "https://hopefulhearts.com", contact: "(555) 890-1234" }
+      ];
+
+      // Filter results by location (for demo, just show all)
+      var results = exampleShelters;
+
+      // Pagination variables
+      var page = 1;
+      var perPage = 5;
+      var totalPages = Math.ceil(results.length / perPage);
+
+      function showPage(pageNum) {
+        resultsList.innerHTML = '';
+        var start = (pageNum - 1) * perPage;
+        var end = start + perPage;
+        var pageResults = results.slice(start, end);
+
+        for (var i = 0; i < pageResults.length; i++) {
+          var shelter = pageResults[i];
+          var li = document.createElement('li');
+          li.innerHTML = '<strong>' + shelter.name + '</strong> - ' +
+            '<a href="' + shelter.url + '" target="_blank">' + shelter.url + '</a>' +
+            ' | Contact: ' + shelter.contact;
+          resultsList.appendChild(li);
+        }
+
+        // Show or hide pagination buttons
+        prevBtn.style.display = (pageNum > 1) ? 'inline' : 'none';
+        nextBtn.style.display = (pageNum < totalPages) ? 'inline' : 'none';
+        resultsDiv.style.display = 'block';
+      }
+
+      // Set up button events
+      nextBtn.onclick = function() {
+        if (page < totalPages) {
+          page++;
+          showPage(page);
+        }
+      };
+      prevBtn.onclick = function() {
+        if (page > 1) {
+          page--;
+          showPage(page);
+        }
+      };
+
+      // Show first page
+      showPage(page);
+    }
+  </script>
+</head>
+<body>
+  <!-- Simple site header with site name -->
+  <header class="site-header">
+    <h2>PetQuest</h2>
+  </header>
+  <!-- Banner styled like the index page -->
+  <header class="cta-banner">
+    <h1>Start Your Fostering Journey</h1>
+    <p>
+      Thank you for your interest in fostering a pet! Fostering helps save lives and gives animals a loving, temporary home.<br>
+      You can use the search tool below to find local animal shelters in your area. Just enter your city and state or zip code, and you'll see a list of example shelters with website links and contact information.<br>
+      If you want even more results, you can also use the Google search link provided to look for animal shelters near you.
+    </p>
+    <a href="index.html" class="cta-button">Back to Home</a>
+  </header>
+  <!-- Search tool for local shelters -->
+  <section class="search-section">
+    <h3>Find a Local Animal Shelter</h3>
+    <form onsubmit="searchShelters(event)">
+      <label for="location">Enter your City and State or Zip Code:</label><br>
+      <input type="text" id="location" name="location" class="search-input" required>
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+    <div id="results" class="results-box">
+      <ul id="results-list"></ul>
+      <button id="prev-btn" class="search-btn">Previous</button>
+      <button id="next-btn" class="search-btn">Next</button>
+    </div>
+    <p class="search-tip">
+      Tip: For more results, you can also
+      <a id="google-link" href="#" target="_blank" onclick="
+        var loc = document.getElementById('location').value;
+        if(loc) this.href='https://www.google.com/search?q=animal+shelter+near+'+encodeURIComponent(loc);
+        else this.href='#';
+      ">search Google for animal shelters near you</a>.
+    </p>
+  </section>
+</body>
+</html>
