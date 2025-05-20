@@ -190,3 +190,13 @@ body {
   margin-top: 20px;
   font-size: 0.95em;
 }
+
+/* Footer styling */
+.site-footer {
+  background-color: #259ca6;
+  color: #ffffff;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 1em;
+  margin-top: 40px;
+}
