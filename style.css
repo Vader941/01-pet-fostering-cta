@@ -11,7 +11,7 @@ body {
   background-image: url('img/cta-bg.jpg');
   background-size: cover;
   background-position: center;
-  color: #76a399; /* Softer, light teal text for better readability */
+  color: #e4e709; /* Softer, light teal text for better readability */
   text-align: center;
   padding-top: 60px;
   padding-bottom: 60px;
@@ -26,7 +26,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(30, 144, 163, 0.5); /* Semi-transparent teal */
+  background: rgba(30, 144, 163, 0.7); /* Semi-transparent teal */
   z-index: 0;
 }
 
@@ -42,7 +42,17 @@ body {
 .cta-banner h1 {
   font-size: 2.5em;
   margin-bottom: 20px;
-  color: #f0fdff; /* Very light blue for heading */
+  color: #ffffff; /* White for strong contrast and readability */
+}
+
+/* Add a border (outline) to the text itself for better readability */
+.cta-banner h1,
+.cta-banner p {
+  text-shadow:
+    -1px -1px 0 #555555,
+     1px -1px 0 #555555,
+    -1px  1px 0 #555555,
+     1px  1px 0 #555555; /* Medium gray outline around the letters */
 }
 
 /* Style the description text */
@@ -52,7 +62,7 @@ body {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  color: #eafffa; /* Softer, light teal for paragraph */
+  color: #f0f8ff; /* Very light blue for better readability */
 }
 
 /* Style the call-to-action button */
